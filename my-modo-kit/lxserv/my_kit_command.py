@@ -3,7 +3,7 @@
 from lx import bless, symbol
 from lxu.object import Message
 # -- Kit specific imports --
-from my_modo_kit import KIT_NAME
+from my_modo_kit import KIT_ABV
 from my_modo_kit.command import KitCommand
 
 
@@ -19,7 +19,7 @@ class MyKitCommand(KitCommand):
         """Initialization of the kit command."""
         super(MyKitCommand, self).__init__()
         # Add arguments
-        self.index_name = self.add_arg("name", symbol.sTYPE_STRING, optional=True)
+        self.index_name = self.add_arg("name", symbol.sTYPE_STRING)
 
     def cmd_Flags(self) -> int:
         """Modo Override: Set the internal flags of the command.
@@ -46,4 +46,4 @@ class MyKitCommand(KitCommand):
 
 
 # Bless the command so that Modo can register it.
-bless(KitCommand, KIT_NAME)
+bless(MyKitCommand, f"{KIT_ABV}.my_command")
